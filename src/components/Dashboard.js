@@ -62,7 +62,12 @@ const Dashboard = () => {
             isLoading 
             ?
             <p>Loading...</p> : 
-            <DisplayResults />
+            // go over data from api call and publish the images + text on page
+            <DisplayResults isLoading={isLoading} data={data}
+            // data = {data.map((item) => {
+            //     return console.log(item)
+            // })} 
+            />
             }
         </div>
     )
