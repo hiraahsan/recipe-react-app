@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DisplayResults = (props) => {
-    const {isLoading, data} = props
+    const {data} = props
     const handleClick = () => {
         console.log('hello there')
     }
