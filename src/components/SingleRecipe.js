@@ -53,7 +53,7 @@ const SingleRecipe = (props) => {
                 for(let i = 0; i < data.length; i++) {
                     const steps = data[i].steps
                     for (let j=0; j<steps.length; j++) {
-                        setInstructions(instructions => [...instructions, steps[j].step])
+                        setInstructions(instructions => [instructions, <li>{`${j + 1}. ` + steps[j].step}</li> ])
                     }
                 }
             }
