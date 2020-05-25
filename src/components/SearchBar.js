@@ -6,7 +6,7 @@ const SearchBar = ({inputValue, userInput, handleSubmit}) => {
         <form 
         onSubmit={(e) => handleSubmit(e)} 
         action="search-recipes">
-            <input onChange={userInput} value={inputValue} type="text"/>
+            <input placeholder="Enter ingredient(s) here!" onChange={userInput} value={inputValue} type="text"/>
             <input className="search-bar" type="submit" value="Search"/>
        </form>
     )
