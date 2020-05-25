@@ -8,7 +8,7 @@ const SingleRecipe = (props) => {
     const [url, setUrl] = useState('')
     const [data, setData] = useState();
     const [instructions, setInstructions] = useState([]);
-
+    const [ingredients, setIngredients] = useState();
 
     const {match, location} = props
     const {state} = location
@@ -56,13 +56,36 @@ const SingleRecipe = (props) => {
                         setInstructions(instructions => [instructions, <li>{`${j + 1}. ` + steps[j].step}</li> ])
                     }
                 }
+            } else {
+              alert('Sorry! The steps are not available for this recipe at the moment. Please search for another one.')
             }
         }, [data])
+
+
+        useEffect( () => {
+          const usedIngredients = state.usedIngredients
+          for (let i = 0; i < usedIngredients.length; i++) {
+            const {amount, unit, name} = usedIngredients[i]
+          setIngredients(ingredients => [ingredients, <li>{amount + ' ' + (unit ? unit : '') + name}</li>])
+          }
+
+          const missedIngredients = state.missedIngredients;
+          for (let i = 0; i < missedIngredients.length; i++) {
+            console.log(missedIngredients[i])
+            const {amount, unit, name} = missedIngredients[i]
+          setIngredients(ingredients => [ingredients, <li>{(amount ? amount : '') + ' ' + (unit ? unit + ' ' : '') + name}</li>])
+          // setting conditional statements for units and amounts
+          }
+        }, [])
 
     return(
         <div className="wrapper recipe-page">
         <h2>{state.title}</h2>
         <img src={state.image} alt={state.title}/>
+        <div className="ingredients">
+          <h3>Ingredients</h3>
+          {ingredients}
+        </div>
         <p>This will be a single recipe page</p>
         <Steps steps={instructions} />
         <Link to="/">Go Home</Link>
