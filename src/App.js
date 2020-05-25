@@ -11,8 +11,7 @@ import './styles/App.scss';
 function App() {
 
   return (
-    <HashRouter basename="/">
-    <Router>
+    <Router basename="/recipe-react-app">
       <Navigation />
       <Switch>
         <Route path="/" component={Dashboard} exact/>
@@ -26,7 +25,6 @@ function App() {
 
       </Switch>
     </Router>
-    </HashRouter>
   );
 }
 
