@@ -1,21 +1,22 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import SearchBar from './SearchBar';
-import UserContext from './UserContext';
 import DisplayResults from './DisplayResults';
 import {apiKey} from './utils';
+
 
 const Dashboard = () => {
     const [inputValue, setInputValue] = useState('')
     const [ingredient, setIngredient] = useState('');
     const userInput = (e) => {
-        // console.log('hello')
         setInputValue(e.target.value)
     }
+
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState('')
     const [url, setUrl] = useState(null)
     const [error, setError] = useState('')
 
+    // set input value on submission of form
     const handleSubmit = (e) => {
         e.preventDefault();
         inputValue ? setIngredient(inputValue) : alert('type something in first')
@@ -26,7 +27,8 @@ const Dashboard = () => {
         setUrl(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredient}&apiKey=${apiKey}`)
 
     }, [ingredient])
-        
+
+    // api call fetching ingredients
     useEffect(() => {
         const fetchData = async () => {
           setIsLoading(true)
@@ -43,9 +45,10 @@ const Dashboard = () => {
               
     
             })        
-          } catch (error) {
-            console.log(error)
-            setError(error);
+          } catch (err) {
+            console.log(err)
+            setError(err);
+            alert(error)
             setIsLoading(false)
           }
         };
@@ -54,27 +57,22 @@ const Dashboard = () => {
         }
       }, [url]);
     
+    
+
+
 
     return(
-        <div>
+        <div className="wrapper">
             <SearchBar handleSubmit={handleSubmit} inputValue={inputValue} userInput = {userInput}/>
             {
             isLoading 
             ?
             <p>Loading...</p> : 
-            // go over data from api call and publish the images + text on page
-            <DisplayResults isLoading={isLoading} data={data}
-            // data = {data.map((item) => {
-            //     return console.log(item)
-            // })} 
-            />
+            // goes over data and publishes the information on page
+            <DisplayResults isLoading={isLoading} data={data} />
             }
         </div>
     )
-
-    // insert dashboard with a search bar containing the user's search
-    // on submit of search button, load the search items below
-    // search items will contain a link to the recipe's page that contain the ingredients the user searched for
 }
 
 export default Dashboard;
