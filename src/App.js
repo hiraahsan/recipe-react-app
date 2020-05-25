@@ -4,7 +4,7 @@ import {BrowserRouter as Router, HashRouter, Route, Switch} from 'react-router-d
 import Navigation from './components/Navigation';
 import About from './components/About';
 import SingleRecipe from './components/SingleRecipe';
-import LoginPage from './components/LoginPage';
+// import LoginPage from './components/LoginPage';
 import './styles/App.scss';
 
 
@@ -15,12 +15,11 @@ function App() {
       <Navigation />
       <Switch>
         <Route path="/" component={Dashboard} exact/>
-        <Route path="/about" component={About} exact />
+        <Route path="/about" component={About} />
         <Route path="/recipes/:id" component={SingleRecipe} />
         <Route path="/login" 
         // component={LoginPage} 
-        render={props => <LoginPage {...props} />
-        }
+        // render={props => <LoginPage {...props} />}
         />
 
       </Switch>
