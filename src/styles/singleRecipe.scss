@@ -5,14 +5,21 @@
 
     justify-content: space-between;
         h2 {
-            text-shadow: 1px 1px $accent;
+            text-shadow: 2px 3px $accent;
             font-size: 6rem;
             align-self: center;
             margin: 20px 0;
+            color: darken($sub-headings, 20%);
         }
 
         img {
             align-self: center;
             margin: 20px;
         }
+}
+
+
+li {
+    margin: 5px 0;
+    line-height: 1.3;
 }
