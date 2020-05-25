@@ -81,13 +81,14 @@ const SingleRecipe = (props) => {
         }, [state.usedIngredients, state.missedIngredients])
 
     return(
-        <div className="wrapper recipe-page">
+        <div className="wrapper">
           {
             isLoading
             ? 
             <p>The recipe is loading...</p>
             :
-            <div>
+            <div className="recipe-page">
+              <span class="pre-heading">how to make</span>
         <h2>{state.title}</h2>
         <img src={state.image} alt={state.title}/>
         <div className="ingredients">
