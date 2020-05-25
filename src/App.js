@@ -1,6 +1,6 @@
 import React from 'react';
 import Dashboard from './components/Dashboard';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, HashRouter, Route, Switch} from 'react-router-dom';
 import Navigation from './components/Navigation';
 import About from './components/About';
 import SingleRecipe from './components/SingleRecipe';
@@ -11,6 +11,7 @@ import './styles/App.scss';
 function App() {
 
   return (
+    <HashRouter basename="/">
     <Router>
       <Navigation />
       <Switch>
@@ -25,6 +26,7 @@ function App() {
 
       </Switch>
     </Router>
+    </HashRouter>
   );
 }
 
