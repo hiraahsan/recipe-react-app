@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
 import firebase from './firebase';
+import UserContext from './UserContext';
 
 const auth = firebase.auth();
 
 const Login = (props) => {
+    // let {user} = useContext(UserContext);
+    // user = false;
+    // let {user} = useContext(UserContext);
+    let user;
+
     const {userSetup} = props;
     const login = (e) => {
         e.preventDefault();
@@ -12,10 +18,10 @@ const Login = (props) => {
         const email = document.getElementById("textEmail").value
         const password = document.getElementById("textPassword").value; 
         auth.signInWithEmailAndPassword(email, password).then((result) => {
-            const user = result.user;
+            user = result.user;
             const email = result.user.email;
             const name = document.getElementById("textName").value;
-    
+            // userAuth = true
            userSetup(user, email, name)
         })
         
@@ -26,7 +32,8 @@ const Login = (props) => {
         const email = document.getElementById("textEmail").value
         const password = document.getElementById("textPassword").value;
         const name = document.getElementById("textName").value;
-    
+        // userAuth = true
+
         auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorMessage = error.message;
@@ -38,6 +45,7 @@ const Login = (props) => {
     
     return(
         // <Router>
+        <UserContext.Provider value={user}>
             <form className="homePage">
             <div className="wrapper">
                 <h1>Welcome!</h1>
@@ -55,6 +63,7 @@ const Login = (props) => {
                 <p>Click here to test the website without signing up.</p>
             </div>
         </form>
+        </UserContext.Provider>
         // </Router>
     )
 }
