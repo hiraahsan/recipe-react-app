@@ -44,7 +44,6 @@ const Login = (props) => {
     
     
     return(
-        // <Router>
         <UserContext.Provider value={user}>
             <form className="homePage">
             <div className="wrapper">
@@ -64,7 +63,6 @@ const Login = (props) => {
             </div>
         </form>
         </UserContext.Provider>
-        // </Router>
     )
 }
 

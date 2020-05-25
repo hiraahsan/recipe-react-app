@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const DisplayResults = (props) => {
     const {data} = props
     const [id, setId] = useState('');
+    // display the data received from api call, if there is at least 1 result received
     return(
 
-        // display the data received from api call, if there is at least 1 result received
         <div className={data.length > 0 ? "display-results" : ""}>
             {
             data.length > 0
