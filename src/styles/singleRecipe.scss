@@ -1,0 +1,18 @@
+.recipe-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    justify-content: space-between;
+        h2 {
+            text-shadow: 1px 1px $accent;
+            font-size: 6rem;
+            align-self: center;
+            margin: 20px 0;
+        }
+
+        img {
+            align-self: center;
+            margin: 20px;
+        }
+}

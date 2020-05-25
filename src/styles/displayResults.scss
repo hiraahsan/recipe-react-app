@@ -1,0 +1,19 @@
+.display-results {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.recipe-results {
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 200px;
+    max-height: 300px;
+    margin: 10px;
+    padding: 20px;
+
+    &:active {
+        background-color: beige;
+    }
+}

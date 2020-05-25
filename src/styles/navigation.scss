@@ -1,0 +1,19 @@
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid $accent;
+    background: $background-color-dark;
+    height: 10vh;
+    align-items: center;
+    a {
+        padding: 25px 50px;
+
+        text-decoration: none;
+
+        &:hover {
+            background: $accent;
+            color: $background-color;
+        }
+    }
+}
