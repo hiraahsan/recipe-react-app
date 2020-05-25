@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import UserContext from './UserContext';
+import React from 'react';
 
 const SearchBar = ({inputValue, userInput, handleSubmit}) => {     
 
     return(
         <form 
         onSubmit={(e) => handleSubmit(e)} 
-        action="searchRecipes">
+        action="search-recipes">
             <input onChange={userInput} value={inputValue} type="text"/>
-            <input type="submit" value="Search"/>
-        </form>
+            <input className="search-bar" type="submit" value="Search"/>
+       </form>
     )
 
 }
