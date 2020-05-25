@@ -4,17 +4,26 @@
     align-items: flex-start;
 
     justify-content: space-between;
+
         h2 {
             text-shadow: 2px 3px $accent;
             font-size: 6rem;
-            align-self: center;
-            margin: 20px 0;
+            text-align: center;
+            // align-self: center;
+            margin: 10px 0;
             color: darken($sub-headings, 20%);
         }
 
         img {
             align-self: center;
             margin: 20px;
+        }
+
+        .pre-heading {
+            font-family: $cursive;
+            align-self: center;
+            font-size: 5rem;
+            margin-top: 40px;
         }
 }
 
