@@ -20,8 +20,6 @@
 
 firebase.js
 utils.js
-LoginPage.js
-Login.js
 FetchDataApi.js
 UserContext.js
 
