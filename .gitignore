@@ -20,6 +20,11 @@
 
 firebase.js
 utils.js
+LoginPage.js
+Login.js
+FetchDataApi.js
+UserContext.js
+
 
 npm-debug.log*
 yarn-debug.log*
