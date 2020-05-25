@@ -7,6 +7,7 @@ const SingleRecipe = (props) => {
     const [id, setId] = useState('')
     const [url, setUrl] = useState('')
     const [data, setData] = useState();
+    const [isLoading, setIsLoading] = useState(true);
     const [instructions, setInstructions] = useState([]);
     const [ingredients, setIngredients] = useState();
 
@@ -35,6 +36,7 @@ const SingleRecipe = (props) => {
                   console.log(items)
                   setData(items);
                   setUrl('');
+                  setIsLoading(false);
                   
         
                 })        
@@ -56,7 +58,7 @@ const SingleRecipe = (props) => {
                         setInstructions(instructions => [instructions, <li>{`${j + 1}. ` + steps[j].step}</li> ])
                     }
                 }
-            } else {
+            } else if(!isLoading && !data) {
               alert('Sorry! The steps are not available for this recipe at the moment. Please search for another one.')
             }
         }, [data])
@@ -66,7 +68,7 @@ const SingleRecipe = (props) => {
           const usedIngredients = state.usedIngredients
           for (let i = 0; i < usedIngredients.length; i++) {
             const {amount, unit, name} = usedIngredients[i]
-          setIngredients(ingredients => [ingredients, <li>{amount + ' ' + (unit ? unit : '') + name}</li>])
+          setIngredients(ingredients => [ingredients, <li>{amount + ' ' + (unit ? unit : ' ') + name}</li>])
           }
 
           const missedIngredients = state.missedIngredients;
@@ -80,6 +82,12 @@ const SingleRecipe = (props) => {
 
     return(
         <div className="wrapper recipe-page">
+          {
+            isLoading
+            ? 
+            <p>The recipe is loading...</p>
+            :
+            <div>
         <h2>{state.title}</h2>
         <img src={state.image} alt={state.title}/>
         <div className="ingredients">
@@ -89,6 +97,8 @@ const SingleRecipe = (props) => {
         <p>This will be a single recipe page</p>
         <Steps steps={instructions} />
         <Link to="/">Go Home</Link>
+        </div>
+        }
         </div>
     )
 }
