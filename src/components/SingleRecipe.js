@@ -68,7 +68,7 @@ const SingleRecipe = (props) => {
           const usedIngredients = state.usedIngredients
           for (let i = 0; i < usedIngredients.length; i++) {
             const {amount, unit, name} = usedIngredients[i]
-          setIngredients(ingredients => [ingredients, <li>{amount + ' ' + (unit ? unit : ' ') + name}</li>])
+          setIngredients(ingredients => [ingredients, <li>{amount + ' ' + (unit ? unit + ' ' : ' ') + name}</li>])
           }
 
           const missedIngredients = state.missedIngredients;
@@ -95,9 +95,9 @@ const SingleRecipe = (props) => {
           <h3>Ingredients</h3>
           {ingredients}
         </div>
-        <p>This will be a single recipe page</p>
+        <h3 className="steps">Steps:</h3>
         <Steps steps={instructions} />
-        <Link to="/">Go Home</Link>
+        <Link className="link-home" to="/">Go Home</Link>
         </div>
         }
         </div>
