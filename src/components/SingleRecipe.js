@@ -50,7 +50,8 @@ const SingleRecipe = (props) => {
           }, [url]);
 
           useEffect( () => {
-            if (data) {
+            console.log(data)
+            if (data !== undefined) {
               // go over data and save the steps in state
                 for(let i = 0; i < data.length; i++) {
                     const steps = data[i].steps
@@ -58,10 +59,10 @@ const SingleRecipe = (props) => {
                         setInstructions(instructions => [instructions, <li>{`${j + 1}. ` + steps[j].step}</li> ])
                     }
                 }
-            } else if(!isLoading && !data) {
+            } else if(!isLoading && (data.status === 404)) {
               alert('Sorry! The steps are not available for this recipe at the moment. Please search for another one.')
             }
-        }, [data])
+        }, [data, isLoading])
 
 
         useEffect( () => {
@@ -78,7 +79,7 @@ const SingleRecipe = (props) => {
           setIngredients(ingredients => [ingredients, <li>{(amount ? amount : '') + ' ' + (unit ? unit + ' ' : '') + name}</li>])
           // setting conditional statements for units and amounts
           }
-        }, [])
+        }, [state.usedIngredients, state.missedIngredients])
 
     return(
         <div className="wrapper recipe-page">
