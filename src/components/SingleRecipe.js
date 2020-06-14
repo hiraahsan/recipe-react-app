@@ -8,9 +8,8 @@ const SingleRecipe = (props) => {
     const [url, setUrl] = useState('')
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
-    const [instructions, setInstructions] = useState([]);
+    const [instructions, setInstructions] = useState();
     const [ingredients, setIngredients] = useState();
-
     const {match, location} = props
     const {state} = location
 
@@ -33,7 +32,6 @@ const SingleRecipe = (props) => {
                 .then(response => response.text())
                 .then((result) => {
                   const items = JSON.parse(result);
-                  console.log(items)
                   setData(items);
                   setUrl('');
                   setIsLoading(false);
@@ -62,6 +60,33 @@ const SingleRecipe = (props) => {
               alert('Sorry! The steps are not available for this recipe at the moment. Please search for another one.')
             }
         }, [data, isLoading])
+
+        useEffect( () => {
+          if (!instructions) {
+            setUrl(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`)
+            const fetchData = async () => {
+    
+              try {
+                await fetch(url)
+                .then(response => response.text())
+                .then((result) => {
+                  const items = JSON.parse(result);
+                  // console.log(items)
+                  // setData(items);
+                  setUrl('');
+                  
+        
+                })        
+              } catch (error) {
+                console.log(error)
+              }
+            };
+            if (url && id) {
+                fetchData();
+            }
+          }
+          
+        }, [instructions, id, url])
 
 
         useEffect( () => {
