@@ -5,7 +5,7 @@ const Steps = (props) => {
 
     return(
         <>
-        {steps}
+        {steps ? steps : <p>Steps weren't able to be retrieved</p>}
         </>
     )
 }
